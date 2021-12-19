@@ -3,6 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test-live": "cross-env DEBUG_MODE=1 jest --coverage",
+    "lint": "eslint --fix",
+    "build": "rimraf -rf ./dist ./lib ./esm && rollup --config",
+    "prepare": "husky install",
+    "ci": "run-s lint test build"
+  },
+  "author": "zhangxuefeng",
+  "license": "ISC",
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
   "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -24,18 +37,5 @@
     "rollup": "^2.61.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-node-resolve": "^5.2.0"
-  },
-  "scripts": {
-    "test": "jest --coverage",
-    "test-live": "cross-env DEBUG_MODE=1 jest --coverage",
-    "lint": "eslint --fix",
-    "build": "rimraf -rf ./dist ./lib ./esm && rollup --config",
-    "prepare": "husky install",
-    "ci": "run-s lint test build"
-  },
-  "author": "zhangxuefeng",
-  "license": "ISC",
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }
